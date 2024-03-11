@@ -1,0 +1,41 @@
+.model small    ; have a code segment and a data segment   
+.stack 100h     ;memory size         
+.code ; code segment .data segment er value code segment a niye asa hoy
+
+
+main proc ;procedure  
+    ;first input
+    mov ah,1 ; for data input  
+    int 21h ; call wiht execute 
+    mov bl,al  ;bydifold all data state al , so sl to bl 
+    
+      ;second input
+    mov ah,1
+    int 21h
+    mov bh,al    
+    
+    
+       ;output
+    mov ah,2  ;for disply           
+    mov dl,bl    ;bl to dl
+    int 21h ;for execute
+    
+    ;output second
+    mov ah,2
+    mov dl,bh
+    int 21h
+     
+     ;return 0
+    exit:
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+    
+    
+    
+    
+    
+     
+    
+    
