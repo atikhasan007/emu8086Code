@@ -1,0 +1,56 @@
+.model small
+.stack 100h
+.data
+a db 'Enter the first number$'
+b db 10,13,'Enter the second number$'
+c db 10,13,'resutl$'
+
+.code
+main proc
+    mov ax,@data
+    mov ds,ax
+    
+    ;string  print   a
+    mov ah,9
+    lea dx,a
+    int 21h
+    
+          ;input first digit
+    mov ah,1
+    int 21h
+    mov bl,al
+    
+           ;string print b
+    mov ah,9
+    lea dx ,b  
+    int 21h
+              ;input second digit
+              
+    mov ah,1 
+    int 21h
+    mov bh,al   
+    
+         ;string c
+         mov ah,9
+         lea dx,c
+         int 21h
+    
+    
+    ;sub    c
+    sub bl,bh     ;bl = bl - bh
+    add bl ,48 
+    mov ah,2   ;display
+    mov dl,bl   ;dl dekbo display
+    int 21h
+    
+    exit:
+    mov ah,4ch
+    int 21h
+    main endp
+end main
+    
+    
+    
+    
+                        
+                       
