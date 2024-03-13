@@ -1,0 +1,96 @@
+.model small
+.stack 100h
+.data
+a db '***********',10,13,'$'       
+b db '****$'
+.code 
+main proc  
+    ;initials
+     mov ax,@data
+     mov ds,ax
+     
+         ;print '?'
+     mov dl,'?'      
+     mov ah,2
+     int 21h
+     
+         ;first input
+      mov ah,1
+      int 21h
+      mov bl,al
+           ;second input
+      mov ah,1
+      int 21h
+      mov bh,al
+           ;third input
+      mov ah,1
+      int 21h
+      mov cl,al
+      
+          ;new line
+      mov ah,2
+      mov dl,10
+      int 21h
+      mov dl,13
+      int  21h    
+         ;a 5 bar print hobe
+      lea  dx,a
+      mov ah,9
+      int 21h
+      int 21h
+      int 21h
+      int 21h
+      int 21h
+           ;b print
+      mov ah,9
+      lea dx,b
+      int 21h
+        ;first output
+      mov ah,2
+      mov dl,bl
+      int 21h
+            ;second output
+      mov ah,2
+      mov dl,bh
+      int 21h
+            ;third output
+      mov ah,2
+      mov dl,cl
+      int 21h
+              ;b print 
+      
+      mov ah,9
+      lea dx,b
+      int 21h 
+      
+      ;new line
+      mov ah,2
+      mov dl,10
+      int 21h
+      mov dl,13
+      int 21h
+      
+           ;5 bar print hobe a
+      mov ah,9
+      lea dx,a
+      int 21h
+      int 21h
+      int 21h
+      int 21h
+      int 21h
+       
+      mov ah,2
+      mov dl,007
+      int 21h
+       
+      exit:
+      mov ah,4ch
+      int 21h
+      main endp
+end main
+      
+      
+      
+     
+
+
