@@ -1,0 +1,58 @@
+.model small
+.stack 100h
+.code
+main proc
+    mov ah,1
+    int 21h
+    mov bl,al
+    
+    
+    mov ah,1
+    int 21h
+    mov bh,al
+    
+    
+    mov ah,1
+    int 21h
+    mov cl,al
+    
+    cmp bl,bh  
+    jge levelA
+    
+    levelV:
+    cmp bh,cl
+    jge levelC
+    mov ah,2
+    mov dl,cl
+    int 21h  
+    jmp exit
+    
+    levelC:
+    mov ah,2
+    mov dl,bh
+    int 21h
+    jmp exit    
+    
+    levelA:
+    cmp bl,cl
+    jge levelD
+    mov ah,2
+    mov dl,cl
+    int 21
+    jmp exit
+    
+    levelD:
+    mov ah,2
+    mov dl,bl
+    int 21h
+    
+    exit:
+    mov  ah,4ch
+    int 21h
+    main endp
+end main
+    
+    
+    
+    
+    
